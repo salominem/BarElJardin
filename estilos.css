@@ -783,7 +783,7 @@ justify-content: center;
     animation-range: entry 5%;
 }
 
- .form-register {
+ .formregister {
     width: 100%;
     max-width: 400px;
     background-color: rgb(123, 121, 121);
@@ -801,13 +801,13 @@ justify-content: center;
     padding-bottom: 30px;
 }
 
-.form-register {
+.formregister {
     padding: 50px;
     margin-top: 20px;
     font-family: 'Calibri';
 }
 
-.form-register h4 {
+.formregister h4 {
     font-size: 22px;
     margin-bottom: 20px;
 }
@@ -842,11 +842,11 @@ textarea.controls {
 }
 
 .botons:hover {
-    color: red;
+    color: green;
 }
 
 @media (max-width: 768px) {
-    .form-register, .titulo-reserva {
+    .formregister, .titulo-reserva {
         padding: 30px;
     }
 
@@ -856,7 +856,7 @@ textarea.controls {
 }
 
 @media (max-width: 490px) {
-    .form-register, .titulo-reserva {
+    .formregister, .titulo-reserva {
         padding: 26px;
     }
 
@@ -873,4 +873,46 @@ textarea.controls {
     background-size: cover;
     padding-top: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding-top: 50px;
+}
+
+#displayData {
+    margin-top: 20px;
+    border: 10px solid #ccc;
+    padding: 10px;
+    border-radius: 400px;
+    background-color: #f9f9f9;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.center-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;          /* Usa toda la altura de la ventana */
+    margin: 0;               /* Elimina márgenes predeterminados */
+    padding-top: 10px;
+}
+
+/* Estilo del botón */
+.btn-eli-registro {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra el texto verticalmente */
+    width: 100px;        /* Tamaño del botón */
+    height: 60px;       /* Asegúrate de que sea igual al ancho para mantener la forma cuadrada */
+    font-family: 'Calibri';
+    color: black;      /* Color del texto */
+    border-radius: 10px; /* Opcional: redondea las esquinas */
+    cursor: pointer;     /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px;     /* Ajusta el tamaño del texto si es necesario */
+    padding: 0;          /* Elimina el padding para mantener la forma cuadrada */
+    text-align: center;  /* Asegura que el texto esté centrado */
+    background-color: wheat;
+}
+
+.btn-eli-registro:hover {
+    color: red;          /* Cambia el color del texto al pasar el ratón */
+    background-color: #f0f0f0; /* Opcional: cambia el color de fondo en hover */
 }

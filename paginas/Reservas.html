@@ -7,19 +7,87 @@
     <title>Document</title>
 </head>
 <body>
-    <h5 class="titulo-reserva">Reservas</h5>
+    
+    <header class="header">
+        <a href="#" class="logo"></a>
+
+        <nav class="navbar">
+            <a href="/index.html">Home</a>
+            <a href="/paginas/Nosotros.html">Nosotros</a>
+            <a href="/paginas/Reservas.html">Reservas</a>
+        </nav>
+    </header>
+
     <div class="container-div">
-    <form class="form-register"
-          action="https://formspree.io/f/mjkbkvzr" 
-          method="POST">
-        <h4>Formulario</h4>
+    <form 
+        class="formregister"
+        action="https://formspree.io/f/xjkbylrg" 
+        method="POST"
+        id="contactForm"
+    >
+        <h4>Reserva de Eventos</h4>
         <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su nombre" >
         <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su apellido" >
         <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su correo" >
-        <textarea class="controls" name="message" placeholder="Asunto"></textarea>
+        <textarea class="controls" name="message" placeholder="asunto"></textarea>
         <input class="botons" type="submit" value="Enviar">
-        
     </form>
+
+    <div id="displayData">Registros de reservas:</div>
+    <div class="center-container"><button  class="btn-eli-registro" id="clearRecords"  >Eliminar Registros</button></div>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Evita el envío del formulario
+
+            const nombres = document.getElementById('nombres').value;
+            const apellidos = document.getElementById('apellidos').value;
+            const correo = document.getElementById('correo').value;
+            const message = document.querySelector('textarea[name="message"]').value;
+
+            const displayData = document.getElementById('displayData');
+
+            // Crear un nuevo div para el nuevo registro
+            const newRecord = document.createElement('div');
+            newRecord.classList.add('record');
+            newRecord.innerHTML = `
+                <p><strong>Nombre:</strong> ${nombres}</p>
+                <p><strong>Apellido:</strong> ${apellidos}</p>
+                <p><strong>Correo:</strong> ${correo}</p>
+                <p><strong>Mensaje:</strong> ${message}</p>
+            `;
+            displayData.appendChild(newRecord);
+
+            const formData = new FormData(this);
+
+            fetch('https://formspree.io/f/mjkbkvzr', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    displayData.innerHTML += '<p>Formulario enviado exitosamente.</p>';
+                    this.reset(); // Opcional: Limpiar el formulario después de enviarlo
+                } else {
+                    displayData.innerHTML += '<p>Hubo un error al enviar el formulario.</p>';
+                }
+            })
+            .catch(error => {
+                displayData.innerHTML += `<p>Hubo un error: ${error.message}</p>`;
+            });
+        });
+
+        document.getElementById('clearRecords').addEventListener('click', function() {
+        const displayData = document.getElementById('displayData');
+        displayData.innerHTML = 'Registros de reservas:';
+    });
+
+    </script>
+
+
     <a href="../index.html" class="home-volver">Inicio</a>
     </div>
 
@@ -41,6 +109,11 @@
             </div>
         </div>
     </footer>
+
+ 
     
+
 </body>
+
+
 </html>
